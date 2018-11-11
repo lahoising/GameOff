@@ -20,7 +20,7 @@ func _ready():
 	enemy.prompt = prompt
 	currState = battleStates.PLAYERSELECT
 	print("state: " + str(currState))
-	get_node("Dialog/PanelContainer/Container/HBoxContainer/Special").connect("pressed", player, "special", [enemy])
+	get_node("Dialog/PanelContainer/Container/HBoxContainer/Special").connect("pressed", player, "specialplay", [enemy])
 	get_node("Dialog/PanelContainer/Container/HBoxContainer/Attack").connect("pressed", get_node("Player"), "attacking", [get_node("Enemy"), player.attck])
 
 func nextState():

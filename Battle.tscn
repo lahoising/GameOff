@@ -36,4 +36,12 @@ sp = 5
 
 [node name="Dialog" parent="." index="3" instance=ExtResource( 5 )]
 
+[node name="Games" type="CanvasLayer" parent="." index="4"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
 
