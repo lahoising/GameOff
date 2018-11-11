@@ -11,10 +11,16 @@ func _ready():
 
 func attack(target, power):
 	target.takeDamage(power)
-	
+	prompt.moving = true
+	nextState()
+
 func special(target):
 	prompt.messages.append("we're special")
-	prompt.switch()
+	prompt.moving = true
+	nextState()
+
+func nextState():
+	get_parent().nextState()
 
 func takeDamage(power):
 	var damage = power - defense
@@ -23,6 +29,7 @@ func takeDamage(power):
 		if (hp < 0):
 			hp = 0
 		prompt.messages.append("the target took "+str(damage)+" damage")
-		prompt.switch()
+		#prompt.switch()
 	else:
 		hp -= 1
+		prompt.messages.append("the target took 1 damage")
