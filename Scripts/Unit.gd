@@ -10,6 +10,7 @@ func _ready():
 	pass
 
 func attack(target, power):
+	print("power: " +str(power))
 	target.takeDamage(power)
 	prompt.moving = true
 	nextState()
@@ -26,10 +27,10 @@ func takeDamage(power):
 	var damage = power - defense
 	if damage > 0:
 		hp -= damage
-		if (hp < 0):
-			hp = 0
 		prompt.messages.append("the target took "+str(damage)+" damage")
-		#prompt.switch()
 	else:
 		hp -= 1
 		prompt.messages.append("the target took 1 damage")
+	
+	if (hp < 0):
+			hp = 0
