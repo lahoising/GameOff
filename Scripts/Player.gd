@@ -1,16 +1,19 @@
 extends "Unit.gd"
 
 onready var hpLabel = get_node("Label")
-
-func _ready():
-	pass
+const PRES = preload("res://Precission.tscn")
 
 func _process(delta):
 	hpLabel.text = "HP: "+str(hp)
 
-func attack(target, power):
+func attacking(target, power):
 	get_node("AnimationPlayer").play("PlayerAttack")
-	.attack(target, power)
+	var pres = PRES.instance()
+	add_child(pres)
+	pres.global_position = Vector2(0,0)
+	pres.target = target
+	pres.power = power
+	pres.get_node("AnimationPlayer").play("PointerMove")
 
 func special(target):
 	get_node("AnimationPlayer").play("PlayerAttack")

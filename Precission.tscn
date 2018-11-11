@@ -1,0 +1,194 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Precission.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "PointerMove"
+length = 4.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pointer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 48, 96 ), Vector2( 352, 96 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pointer:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pointer:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6, 2.5, 2.9, 3.1, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "setRed"
+}, {
+"args": [  ],
+"method": "setYellow"
+}, {
+"args": [  ],
+"method": "setGreen"
+}, {
+"args": [  ],
+"method": "setYellow"
+}, {
+"args": [  ],
+"method": "setRed"
+}, {
+"args": [  ],
+"method": "setYellow"
+}, {
+"args": [  ],
+"method": "setGreen"
+}, {
+"args": [  ],
+"method": "setYellow"
+}, {
+"args": [  ],
+"method": "setRed"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "PointerStart"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pointer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 48, 96 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pointer:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pointer:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[node name="Precission" type="Node2D" index="0"]
+
+pause_mode = 2
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="Background" type="Polygon2D" parent="." index="0"]
+
+polygon = PoolVector2Array( 0, 0, 400, 0, 400, 304, 0, 304 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 0.392235 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Meter" type="Polygon2D" parent="." index="1"]
+
+position = Vector2( 48, 128 )
+polygon = PoolVector2Array( 0, 0, 304, 0, 304, 32, 0, 32 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Pointer" type="Polygon2D" parent="." index="2"]
+
+position = Vector2( 48, 96 )
+polygon = PoolVector2Array( -16, -16, 0, 16, 16, -16 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/PointerMove = SubResource( 1 )
+anims/PointerStart = SubResource( 2 )
+blend_times = [  ]
+
+
