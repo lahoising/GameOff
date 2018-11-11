@@ -28,9 +28,11 @@ func takeDamage(power):
 	if damage > 0:
 		hp -= damage
 		prompt.messages.append("the target took "+str(damage)+" damage")
-	else:
+	elif power > 0:
 		hp -= 1
 		prompt.messages.append("the target took 1 damage")
+	else:
+		prompt.messages.append("You're too weak to attack")
 	
 	if (hp < 0):
 			hp = 0
