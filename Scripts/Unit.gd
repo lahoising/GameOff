@@ -6,11 +6,7 @@ export(int) var defense
 export(int) var sp
 onready var prompt
 
-func _ready():
-	pass
-
 func attack(target, power):
-	print("power: " +str(power))
 	target.takeDamage(power)
 	prompt.moving = true
 	nextState()

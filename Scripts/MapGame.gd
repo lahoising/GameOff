@@ -1,20 +1,14 @@
-extends Control
+extends "games.gd"
 
 var table = []
 export(int) var rows
 export(int) var cols
-var target
-var thread
 onready var selector = $TileMap/Selector
 var gridcoor = Vector2()
 var nothere = Vector2()
 
-func _ready():
-	thread = Thread.new()
-	thread.start(self, "_bg_load", "")
-	get_tree().paused = true
-
 func _bg_load(path):
+	randomize()
 	var solution = []
 	var row = -1
 	var col = -1
@@ -35,7 +29,7 @@ func _bg_load(path):
 			col = j
 		if solve(solution, row, col, 1):
 			table[i][j] = val
-			nothere = Vector2(i, j)
+			nothere = Vector2(j, i)
 			break
 	
 	print(solution)
@@ -45,12 +39,11 @@ func _bg_load(path):
 		for j in range(cols):
 			$TileMap.get_children()[i*cols+j].text = str(table[i][j])
 	
-	closeThread()
+	._bg_load(path)
 
 func closeThread():
-	thread.wait_to_finish()
 	$TileMap/Selector.visible = true
-	$LoadScreen.hide()
+	.closeThread()
 
 func _input(event):
 	if event.is_action_pressed("ui_select"):
@@ -88,11 +81,6 @@ func updateTable(inc):
 				print("won")
 				closeGame()
 			break
-
-func closeGame():
-	get_parent().get_parent().get_node("Player").special(target)
-	get_tree().paused = false
-	queue_free()
 
 func checkSolve(t, posx, posy, c):
 	var row = posx
