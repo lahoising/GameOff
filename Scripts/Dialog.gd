@@ -25,8 +25,8 @@ func _process(delta):
 				get_parent().nextState()
 
 func switch(state):
-	print(messages)
-	print("switch state: "+str(state))
+	#print(messages)
+	#print("switch state: "+str(state))
 	if state == 1 or state == 3:
 		dialog.visible = true
 		buttons.visible = false
