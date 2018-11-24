@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var pointer
 var target
@@ -9,7 +9,7 @@ func _ready():
 	get_tree().paused = true
 
 func _input(event):
-	if event.is_action_pressed("ui_select"):
+	if event.is_action_pressed("ui_select") or event.is_action_pressed("lclick"):
 		get_node("AnimationPlayer").stop()
 		$AnimationPlayer.play("PointerStart")
 		get_parent().get_parent().get_node("Player").attack(target, power*getPoint())
