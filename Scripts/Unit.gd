@@ -5,28 +5,31 @@ export(int) var attck
 export(int) var defense
 export(int) var sp
 onready var prompt
+onready var hpLabel = get_node("Label")
 
 func attack(target, power):
-	target.takeDamage(power)
+	#if hp > 0:
+	target.takeDamage(power, target.name)
 	prompt.moving = true
 	nextState()
 
 func special(target):
-	prompt.messages.append("we're special")
+	#if hp > 0:
+	prompt.messages.append("we're number one")
 	prompt.moving = true
 	nextState()
 
 func nextState():
 	get_parent().nextState()
 
-func takeDamage(power):
+func takeDamage(power, n):
 	var damage = power - defense
 	if damage > 0:
 		hp -= damage
-		prompt.messages.append("the target took "+str(damage)+" damage")
+		prompt.messages.append(n+" took "+str(damage)+" damage")
 	elif power > 0:
 		hp -= 1
-		prompt.messages.append("the target took 1 damage")
+		prompt.messages.append(n+" took 1 damage")
 	else:
 		prompt.messages.append("You're too weak to attack")
 	

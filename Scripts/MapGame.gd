@@ -32,8 +32,6 @@ func _bg_load(path):
 			nothere = Vector2(j, i)
 			break
 	
-	print(solution)
-	print(table)
 	var num = 0
 	for i in range(rows):
 		for j in range(cols):
@@ -55,7 +53,6 @@ func _input(event):
 			var cell_start = $TileMap.world_to_map(selector.position)
 			var cell_target = cell_start + dir
 			selector.position = $TileMap.map_to_world(cell_target)
-			print(gridcoor)
 	if event.is_action_pressed("ui_accept"):
 		updateTable(1)
 	elif event.is_action_pressed("ui_cancel"):
@@ -78,7 +75,6 @@ func updateTable(inc):
 				child.text = str(12)
 				table[gridcoor.y][gridcoor.x] = 12
 			if checkSolve(table, -1, -1, 1):
-				print("won")
 				closeGame()
 			break
 
